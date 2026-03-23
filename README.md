@@ -153,6 +153,39 @@ Subdomains (47 found)
 
 ---
 
+
+## Demo
+
+```
+$ shadowmap --target example.com --output report.md
+
+ shadowmap v1.0.0  Passive Attack Surface Mapper
+ Target: example.com
+ Mode: Passive only (zero packets sent to target)
+
+ Phase 1: Certificate Transparency Logs
+  Querying crt.sh... 23 certificates found
+  Querying Censys...  17 additional SANs discovered
+
+ Phase 2: DNS Enumeration
+  A records:      4 IP addresses
+  MX records:     2 mail servers
+  NS records:     4 nameservers (2 external DNS providers)
+  TXT records:    SPF, DMARC, Google verification, 3 others
+  CNAMEs:         8 (CDN, SaaS, internal services)
+
+ Phase 3: AI Risk Analysis
+  Discovered 31 unique subdomains
+
+ High Priority Assets
+  api.example.com        -> 203.0.113.42   [API endpoint, no WAF detected]
+  admin.example.com      -> 203.0.113.51   [Admin panel, publicly accessible]
+  staging.example.com    -> 203.0.113.19   [Staging env, may have weaker controls]
+
+ Report saved to report.md
+ Total assets mapped: 31 subdomains, 4 IPs, 2 mail servers
+```
+
 ## Contributing
 
 Contributions welcome. Priority areas:
